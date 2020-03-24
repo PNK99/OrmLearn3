@@ -13,6 +13,8 @@ public class MainController {
 	
 	@RequestMapping("/")
 	public void get() {
-		System.out.println(countryService.getAllCountries());
+		System.out.println(countryService.search("gre"));
+	System.out.println(countryService.searchAsc("gre"));
+	System.out.println(countryService.searchCharacter('A'));
 	}
 }

@@ -43,10 +43,10 @@ public class CountryService {
 	public void updateCountry(Country newCountry) {
 		Country country = null;
 		
-		Optional<Country> optC = countryRepository.findById(newCountry.getCo_code());
+		Optional<Country> optC = countryRepository.findById(newCountry.getCode());
 		if (optC.isPresent())
 			country = optC.get();
-		country.setCo_name(newCountry.getCo_name());
+		country.setName(newCountry.getName());
 		countryRepository.save(country);
 	}
 	@Transactional
@@ -58,4 +58,17 @@ public class CountryService {
 		countryRepository.delete(country);
 	}
 
+	@Transactional
+	public List<Country>  search (String s){
+		return countryRepository.findByNameContaining(s);
+	}
+	@Transactional
+	public List<Country>  searchAsc (String s){
+		return countryRepository.findByNameContainingOrderByNameAsc(s);
+	
+	}
+	@Transactional
+	public List<Country>  searchCharacter (Character s){
+		return countryRepository.findByCharacter(s);
+	}
 }
