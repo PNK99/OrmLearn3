@@ -14,6 +14,7 @@ public interface CountryRepository extends JpaRepository<Country, String> {
 	public List<Country> findByNameContaining(String name);
 	
 	public List<Country> findByNameContainingOrderByNameAsc(String name);
+	
 	@Query("SELECT e FROM Country e WHERE e.name LIKE ?1%")
 	public List<Country> findByCharacter(Character name);
 	
